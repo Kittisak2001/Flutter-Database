@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_database/models/Tranection.dart';
-import 'package:flutter_database/providers/transection.dart';
+import 'package:flutter_database/models/Tranections.dart';
+import 'package:flutter_database/providers/transection_provider.dart';
 import 'package:provider/provider.dart';
 
 class FromScreen extends StatelessWidget {
@@ -52,7 +52,7 @@ class FromScreen extends StatelessWidget {
                     if (formKey.currentState!.validate()) {
                       var title = titleController.text;
                       var amount = amountController.text;
-                      Transection statement = Transection(
+                      Transections statement = Transections(
                         title: title,
                         amount: double.parse(amount),
                         date: DateTime.now()

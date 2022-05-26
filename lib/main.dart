@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_database/models/Tranection.dart';
-import 'package:flutter_database/providers/transection.dart';
+import 'package:flutter_database/models/Tranections.dart';
+import 'package:flutter_database/providers/transection_provider.dart';
 import 'package:flutter_database/screens/from_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListView.builder(
             itemCount: provider.transection.length,
             itemBuilder: (context, int index) {
-              Transection data = provider.transection[index];
+              Transections data = provider.transection[index];
               return Card(
                 elevation: 5, 
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
