@@ -1,16 +1,10 @@
-# flutter_database
+# Preview Money Tracker Application (Flutter&Database)
 
-A new Flutter project.
+- List View [Page 1]
+![ListView](https://user-images.githubusercontent.com/100192085/170582476-70c6212a-5273-4dce-b46e-c61aafdfdcda.jpg)
 
-## Getting Started
+- Add Item [Page 2]
+![AddView](https://user-images.githubusercontent.com/100192085/170582569-d3ab534d-25d9-4712-9ce6-227c5c1f08e5.jpg)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Credit Kongruksiam : https://www.youtube.com/watch?v=xODay-kU0R8&ab_channel=KongRuksiamOfficial
