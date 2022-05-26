@@ -10,11 +10,16 @@ class TransectionProvider with ChangeNotifier{
     return transection;
   }
 
-  void addTransection(Transections statement) async{
-    var db = await TransectionDB(dbName: "transection.db").openDatabase();
-    print(db);
-    transection.insert(0,statement);
+  void initData() async{
+    var db = TransectionDB(dbName: "transection.db");
+    transection = await db.LoadAllData();
+    notifyListeners();
+  }
 
+  void addTransection(Transections statement) async{
+    var db = TransectionDB(dbName: "transection.db");
+    await db.InsertData(statement);
+    transection = await db.LoadAllData();
     notifyListeners();
 
   }

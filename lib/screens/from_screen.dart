@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_database/main.dart';
 import 'package:flutter_database/models/Tranections.dart';
 import 'package:flutter_database/providers/transection_provider.dart';
+import 'package:flutter_database/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class FromScreen extends StatelessWidget {
@@ -24,7 +26,7 @@ class FromScreen extends StatelessWidget {
               children: [
                 TextFormField(
                   controller: titleController,
-                  autofocus: true,
+                  autofocus: false,
                   decoration: new InputDecoration(labelText: "Name Item : "),
                   validator: (String? str) {
                     if (str!.isEmpty) {
@@ -53,15 +55,17 @@ class FromScreen extends StatelessWidget {
                       var title = titleController.text;
                       var amount = amountController.text;
                       Transections statement = Transections(
-                        title: title,
-                        amount: double.parse(amount),
-                        date: DateTime.now()
-                      );
+                          title: title,
+                          amount: double.parse(amount),
+                          date: DateTime.now());
                       var provider = Provider.of<TransectionProvider>(context,
                           listen: false);
                       provider.addTransection(statement);
 
-                      Navigator.pop(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MyHomePage(title: title);
+                      }));
                     }
                   },
                   child: Text("Add Item"),

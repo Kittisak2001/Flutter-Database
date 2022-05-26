@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_database/models/Tranections.dart';
 import 'package:flutter_database/providers/transection_provider.dart';
 import 'package:flutter_database/screens/from_screen.dart';
+import 'package:flutter_database/screens/home_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +12,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -42,48 +44,27 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          actions: [
-            IconButton(
-              onPressed: (() {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return FromScreen();
-                  }),
-                );
-              }),
-              icon: Icon(Icons.add),
-            ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Colors.blue,
+        body: TabBarView(
+          children: [
+            HomeScreen(),
+            FromScreen(),
           ],
         ),
-        body: Consumer(builder: (context, TransectionProvider provider,Widget? child) {
-          var count = provider.transection.length;
-          if(count <= 0 ){
-            return Center(
-              child: Text("ไม่พบข้อมูล", style: TextStyle(fontSize: 20),),
-            );
-          }
-          return ListView.builder(
-            itemCount: provider.transection.length,
-            itemBuilder: (context, int index) {
-              Transections data = provider.transection[index];
-              return Card(
-                elevation: 5, 
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                child: ListTile(
-                  leading: CircleAvatar(
-                      radius: 30,
-                      child: FittedBox(
-                        child: Text(data.amount.toString()),
-                      )),
-                  title: Text(data.title.toString()),
-                  subtitle: Text(DateFormat("dd/MM/yyyy").format(data.date!)),
-                ),
-              );
-            });
-        },));
+        bottomNavigationBar: TabBar(tabs: [
+          Tab(
+            icon: Icon(Icons.list),
+            text: "List",
+          ),
+          Tab(
+            icon: Icon(Icons.add),
+            text: "Add Item",
+          ),
+        ]),
+      ),
+    );
   }
 }
